@@ -1,0 +1,24 @@
+    .carousel-image {
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
+    }
+
+    .best-seller-img {
+        height: 150px;
+        width: 200px;
+        object-fit: cover;
+    }
+
+    .product-name {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+    
+    .fruite-img {
+        height: 250px;
+        width: 300px;
+        object-fit: cover;
+    }
