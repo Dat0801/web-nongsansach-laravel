@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('employee_name');
             $table->string('employee_email')->unique();
             $table->string('employee_phone')->unique();
-            $table->string('employee_password');
+            $table->string('password');
             $table->boolean('status')->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

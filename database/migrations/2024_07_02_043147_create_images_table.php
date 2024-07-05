@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id('image_id');
             $table->foreignId('product_id')->constrained('products', 'product_id');
-            $table->string('image_path');
+            $table->string('image_name');
+            $table->boolean('is_primary')->default(false);
             $table->boolean('status')->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

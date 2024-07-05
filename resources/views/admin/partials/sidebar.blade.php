@@ -53,11 +53,14 @@
         </a>
         <div id="collapseQLSanPham" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/product">Xem sản phẩm</a>
-                <a class="collapse-item" href="/admin/product/addproduct">Thêm sản
+                <a class="collapse-item" href="{{ route('product.index') }}">Xem sản phẩm</a>
+                <a class="collapse-item" href="{{ route('product.create') }}">Thêm sản
                     phẩm</a>
-                <a class="collapse-item" href="/admin/product/recycleproduct">Khôi phục sản
+                <a class="collapse-item" href="{{ route('product.trash') }}">Khôi phục sản
                     phẩm</a>
+                <a class="collapse-item" href="{{ route('unit.index') }}">Quản lý đơn vị tính</a>
+                <a class="collapse-item" href="{{ route('weight.index') }}">Quản lý đơn vị trọng lượng</a>
+                <a class="collapse-item" href="{{ route('image.index') }}">Quản lý hình ảnh</a>
             </div>
         </div>
     </li>
@@ -74,8 +77,8 @@
         </a>
         <div id="collapseQLDanhMuc" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/category">Xem danh mục</a>
-                <a class="collapse-item" href="/admin/category/addcategory">Thêm danh
+                <a class="collapse-item" href="{{ route('category.index') }}">Xem danh mục</a>
+                <a class="collapse-item" href="{{ route('category.create') }}">Thêm danh
                     mục</a>
             </div>
         </div>
@@ -111,56 +114,15 @@
         <div id="collapseQLNguoiDung" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/customer">Xem khách hàng</a>
-                <a class="collapse-item" href="/admin/customer/addCustomer">Thêm khách
+                <a class="collapse-item" href="{{ route('user.index') }}">Xem khách hàng</a>
+                <a class="collapse-item" href="{{ route('user.create') }}">Thêm khách
                     hàng</a>
+                <a class="collapse-item" href="">Quản lý địa chỉ</a>
+                <a class="collapse-item" href="">Quản lý loại địa chỉ</a>
+
             </div>
         </div>
     </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Quản lý nhà cung cấp -->
-    <div class="sidebar-heading">
-        Nhà cung cấp
-    </div>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQLHoaDon"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Quản lý nhà cung cấp</span>
-        </a>
-        <div id="collapseQLHoaDon" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/suppliers">Xem nhà cung cấp</a>
-                <a class="collapse-item" href="/admin/suppliers/addsuppliers">Thêm
-                    nhà cung cấp</a>
-            </div>
-        </div>
-    </li>
-    <hr class="sidebar-divider">
-
-    <!-- Quản lý phiếu nhập -->
-    <div class="sidebar-heading">
-        Phiếu nhập
-    </div>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQLPhieuNhap"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Quản lý phiếu nhập</span>
-        </a>
-        <div id="collapseQLPhieuNhap" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/productReceipt">Xem phiếu nhập</a>
-                <a class="collapse-item" href="/admin/productReceipt/addReceipt">Thêm
-                    phiếu nhập</a>
-            </div>
-        </div>
-    </li>
-
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

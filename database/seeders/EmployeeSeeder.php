@@ -20,7 +20,7 @@ class EmployeeSeeder extends Seeder
 
         */
         $employees = [
-            ['employee_name' => 'Nguyễn Văn An', 'employee_email' => 'nva2003@gmail.com', 'employee_phone' => '0897785658', 'employee_password' => Hash::make('Admin123*')]
+            ['employee_name' => 'Nguyễn Văn An', 'employee_email' => 'nva2003@gmail.com', 'employee_phone' => '0897785658', 'password' => Hash::make('Admin123*')]
         ];
         try {
             foreach ($employees as $employee) {

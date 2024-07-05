@@ -1,4 +1,4 @@
-@extends('admin.layouts.adminlayout')
+@extends('admin.shared.layout')
 
 @section('title')
 <title>{{ $title }}</title>
