@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('order_details', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained('orders', 'order_id');
             $table->foreignId('product_id')->constrained('products', 'product_id');
-            $table->primary('order_id', 'product_id');
+            $table->primary(['order_id', 'product_id']);
             $table->integer('quantity');
             $table->double('total');
             $table->timestamp('created_at')->useCurrent();

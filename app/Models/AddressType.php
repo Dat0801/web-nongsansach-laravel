@@ -14,4 +14,11 @@ class AddressType extends Model
     protected $fillable = [
         'address_type_name',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'address_type_id', 'address_type_id');
+    }
+
+    
 }

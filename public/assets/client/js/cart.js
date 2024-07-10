@@ -1,29 +1,28 @@
 $(document).ready(function () {
-    $('.toast').toast();
-    //update
-    $(document).on('change', '.cart-qty-single', function () {
-        var getItemID = $(this).data('item-id');
-        var urlBase = $(this).data('url-base');
-        var product_qty = $(this).data('item-qty');
-        var qty = $(this).val();
-        if (qty < 1) {
-            qty = 1;
+    //update quantity in cart
+    $(document).on('change', '.cart-quantity-single', function () {
+        var id = $(this).data('id');
+        var urlCart = $(this).data('url');
+        var product_stock = $(this).data('stock');
+        var quantity = $(this).val();
+        if (quantity < 1) {
+            quantity = 1;
             $(this).val(1);
             alert("Số lượng không thể nhỏ hơn 1.");
-        } else if (qty > product_qty) {
-            qty = product_qty;
-            $(this).val(product_qty);
+        } else if (quantity > product_stock) {
+            quantity = product_stock;
+            $(this).val(product_stock);
             alert("Số lượng không thể lớn hơn số lượng tồn.");
         }
         $.ajax({
-            type: 'POST',
-            url: urlBase + '/cart/ajaxCalls',
+            type: 'GET',
+            url: urlCart + '/update-cart',
             dataType: 'json',
-            data: { action: 'update-qty', itemID: getItemID, qty: qty },
+            data: { id: id, quantity: quantity },
             success: function (data) {
                 if (data.msg == 'success') {
-                    $.post(urlBase + '/cart/tableCart', function (data) {
-                        $('#order').html(data);
+                    $.get(urlCart + '/cart-table', function (data) {
+                        $('#cart-table-body').html(data);
                     })
                 }
             },
@@ -31,80 +30,48 @@ $(document).ready(function () {
 
     });
 
-    // remove all
-    $('#emptyCart').click(function () {
-        var urlBase = $(this).data('url-base');
+    //remove item from cart
+    $(document).on('click', '#accept-delete', function () {
+        var urlCart = $(this).data('url');
+        var id = $(this).data('id');
         $.ajax({
-            type: 'POST',
-            url: urlBase + '/cart/ajaxCalls',
+            type: 'GET',
+            url: urlCart + '/remove-from-cart/' + id,
             dataType: 'json',
-            data: { action: 'empty', empty_cart: true },
-            success: function (data) {
-                if (data.msg == 'success') {
-                    window.location.href = urlBase + '/product';
+            success: function (message) {
+                if (message.msg == 'success') {
+                    $('#deleteConfirmationModal').modal('hide');
+                    $('.modal-backdrop').remove();
+
+                    $.get(urlCart + '/cart-table', function (data) {
+                        $('#cart-table-body').html(data);   
+                    })
+
+                    $.get(urlCart + '/cart-badge', function (data) {
+                        $('#cart-badge').html(data);
+                    });
                 }
             }
         });
     });
 
-    //remove
-    $(document).on('click', '.remove-cart', function () {
-        var getItemID = $(this).data('item-id');
-        var urlBase = $(this).data('url-base');
-        if (confirm("Bạn có đồng ý xóa sản phẩm hay không?")) {
-            $.ajax({
-                type: 'POST',
-                url: urlBase + '/cart/ajaxCalls',
-                dataType: 'json',
-                data: { action: 'remove', itemID: getItemID },
-                success: function (data) {
-                    if (data.msg == 'success') {
-                        $.post(urlBase + '/cart/tableCart', function (data) {
-                            $('#order').html(data);
-                        })
-                    }
-                }
-            });
-        }
-    });
-
-    //add
+    //add product to cart
     $(document).on('click', '.add-cart', function () {
-        var productID = $(this).data('product-id');
-        var urlBase = $(this).data('url-base');
-        var qty = $(this).data('product-qty');
-        var productDVT = $(this).data('product-dvt');
-        var productPrice = $(this).data('product-price');
-        var productName = $(this).data('product-name');
-        var productImg = $(this).data('product-img');
-        var productQty = $(this).data('product-quantity');
-
+        var urlCart = $(this).data('url');
+        var id = $(this).data('id');
         $.ajax({
-            type: 'POST',
-            url: urlBase + '/cart/ajaxCalls',
+            type: 'GET',
+            url: urlCart + '/add-to-cart-ajax/' + id,
             dataType: 'json',
-            data: {
-                action: 'add',
-                productID: productID,
-                qty: qty,
-                productQty: productQty,
-                productDVT: productDVT,
-                productPrice: productPrice,
-                productName: productName,
-                productImg: productImg
-            },
             success: function (message) {
                 if (message.msg == 'success') {
-                    $.post(urlBase + '/product/cartQuantity', function (data) {
+                    $.get(urlCart + '/cart-badge', function (data) {
+                        $('#cart-badge').html(data);
 
-                        $('#cart-quantity').html(data);
-
-                        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-                        var toastList = toastElList.map(function (toastEl) {
-                            return new bootstrap.Toast(toastEl)
-                        });
-                        toastList.forEach(toast => toast.show());
+                        var toast = new bootstrap.Toast(document.querySelector('.toast'));
+                        toast.show();
                     });
+
                 }
             },
         });

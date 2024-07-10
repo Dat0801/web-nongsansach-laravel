@@ -51,6 +51,7 @@ function getWardData(districtId) {
 function renderProvinceData(provinces) {
   var provinceSelect = document.getElementById('province');
   var provinceSelected = document.getElementById('provinceSelected');
+  console.log(provinceSelected);
   provinceSelect.innerHTML = '<option value="" code="">Chọn tỉnh/thành phố</option>';
   for (var i = 0; i < provinces.length; i++) {
     var province = provinces[i];

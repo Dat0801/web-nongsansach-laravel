@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        $product_id = $this->route('product_id');        
+        $product_id = $this->route('product');        
         return [
             //
             'product_name' => [

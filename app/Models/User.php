@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
     protected $fillable = [
         'user_id',
         'name',
@@ -44,4 +46,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'user_id', 'user_id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'user_id');
+    }
+
+    public function defaultAddress()
+    {
+        return $this->hasOne(Address::class, 'user_id', 'user_id')->where('address_type_id', 1);
+    }
+    
+    
 }

@@ -24,4 +24,10 @@ class Employee extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'employee_id', 'employee_id');
+    }
+
 }

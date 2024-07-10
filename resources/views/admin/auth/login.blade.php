@@ -39,38 +39,31 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Chào mừng bạn trở lại!</h1>
                                     </div>
-                                    @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
                                     @if (Session::has('error'))
                                         <div class="alert alert-danger">
                                             {{ Session::get('error') }}
                                         </div>
                                     @endif
-                                    <form action="/admin/login/store" method="POST" class="user">
+                                    <form action="{{ route('admin.login.store') }}" method="POST" class="user">
                                         <div class="form-group mb-4">
                                             <input type="text" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Nhập email" name="email">
+                                                placeholder="Nhập email" name="email" value="{{ old('email') }}">
+                                            @error('email')
+                                                <div class="invalid-feedback mx-2" style="display: block">
+                                                    <strong>{{ $message }}</strong>
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group mb-4">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Nhập mật khẩu tại đây"
                                                 name="password">
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck"
-                                                    name="remember">
-                                                <label class="custom-control-label" for="customCheck">Ghi nhớ thông tin
-                                                    đăng nhập của tôi</label>
-                                            </div>
+                                            @error('password')
+                                                <div class="invalid-feedback mx-2" style="display: block">
+                                                    <strong>{{ $message }}</strong>
+                                                </div>
+                                            @enderror
                                         </div>
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -89,4 +82,3 @@
     </div>
 
 </body>
-

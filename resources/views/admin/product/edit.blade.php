@@ -6,7 +6,7 @@
     <center>
         <h2>{{ Str::upper($title) }}</h2>
     </center>
-    <form action="{{ route('product.update', ['product' => $product->product_id]) }}" method="post">
+    <form action="{{ route('product.update', ['product' => $product->product_id]) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         <div class="row">
             <div style="margin: 0px 50px;" class="col">
@@ -76,7 +76,7 @@
                                     ->pluck('image_name')
                                     ->join(', ');
                             @endphp
-                            <input type="file" multiple class="custom-file-input" id="secondaryImages" name="img_name[]">
+                            <input type="file" multiple class="custom-file-input" id="secondaryImages" name="secondary_img_name[]">
                             <label class="custom-file-label"
                                 for="secondaryImages">{{ $secondaryImages ?: 'Chọn hình ảnh' }}</label>
                         </div>

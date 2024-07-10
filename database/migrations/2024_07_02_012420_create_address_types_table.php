@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('address_types', function (Blueprint $table) {
             $table->id('address_type_id');
-            $table->string('address_type_name');
+            $table->string('address_type_name')->unique();
             $table->boolean('status')->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

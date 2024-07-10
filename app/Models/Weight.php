@@ -14,4 +14,10 @@ class Weight extends Model
     protected $fillable = [
         'weight_name',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'weight_id', 'weight_id');
+    }
+
 }

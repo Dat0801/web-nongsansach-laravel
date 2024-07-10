@@ -23,7 +23,7 @@ class AddressSeeder extends Seeder
                 'address' => 'c3/33 Vườn Thơm',
                 'ward' => 'Xã Bình Lợi',
                 'district' => 'Huyện Bình Chánh',
-                'province' => 'Thành Phố Hồ Chí Minh'
+                'province' => 'Hồ Chí Minh'
             ],
             [
                 'user_id' => 1,
@@ -31,7 +31,7 @@ class AddressSeeder extends Seeder
                 'address' => 'Lầu 2, 178E Thành Thái',
                 'ward' => 'Phường 6',
                 'district' => 'Quận 10',
-                'province' => 'Thành Phố Hồ Chí Minh'
+                'province' => 'Hồ Chí Minh'
             ]
         ];
         try {

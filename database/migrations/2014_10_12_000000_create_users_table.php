@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('avatar')->default('avatar.jpg');
             $table->string('phone_number')->unique();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();

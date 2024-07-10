@@ -19,4 +19,14 @@ class Address extends Model
         'district',
         'province',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function addressType()
+    {
+        return $this->belongsTo(AddressType::class, 'address_type_id', 'address_type_id');
+    }
 }

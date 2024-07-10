@@ -9,8 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard', [
-            'title' => 'Trang chủ'
-        ]);
+        return view('admin.dashboard.index')->with('title', 'Trang chủ');
     }
 }

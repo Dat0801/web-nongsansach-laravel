@@ -15,8 +15,10 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->foreignId('user_id')->constrained('users', 'user_id');
-            $table->foreignId('employee_id')->constrained('employees', 'employee_id');
+            $table->foreignId('employee_id')->nullable();
+            $table->foreign('employee_id')->references('employee_id')->on('employees');
             $table->date('ship_date')->nullable();
+            $table->string('payment_method')->default('cod');
             $table->double('order_total')->nullable();
             $table->string('status')->default('Đang xử lý');
             $table->timestamp('created_at')->useCurrent();

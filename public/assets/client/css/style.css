@@ -453,10 +453,6 @@
 
 
 /*** Single Page Start ***/
-.pagination {
-    display: inline-block;
-}
-  
 .pagination a {
     color: var(--bs-dark);
     padding: 10px 16px;
