@@ -3,7 +3,7 @@
 <title>{{ $title }}</title>
 @endsection
 @section('content')
-<form class="d-flex" action="{{ route('product.index') }}" method="get">
+<form class="d-flex" action="{{ route('admin.product.index') }}" method="get">
     <div style="margin: 0 auto">
         <input class="form-control me-2" type="search" placeholder="Nhập tên hàng hóa..." aria-label="Tìm kiếm hàng hóa..."
             style="width:400px; margin: 0 auto" name="searchStr" id="searchStr">
@@ -20,11 +20,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 my-3">
-            <a href="{{ route('product.create') }}"
+            <a href="{{ route('admin.product.create') }}"
                 class="btn btn-success material-symbols-outlined">
                 add_circle
             </a>
-            <a href="{{ route('product.trash') }}"
+            <a href="{{ route('admin.product.trash') }}"
                 class="btn btn-success material-symbols-outlined mx-3">
                 recycling
             </a>
@@ -53,15 +53,15 @@
             <tr>
                 <td>{{ $product->product_id }}</td>
                 <td>{{ $product->product_name }}</td>
-                <td>{{ $product->category_name }}</td>
-                <td>{{ $product->unit_name }}</td>
+                <td>{{ $product->category->category_name }}</td>
+                <td>{{ $product->unit->unit_name }}</td>
                 <td>{{ $product->product_quantity }}</td>
-                <td>{{ $product->weight_name }}</td>
+                <td>{{ $product->weight->weight_name }}</td>
                 <td>{{ $product->product_price }}</td>
                 <td>{{ $product->product_stock }}</td>
                 <td>{{ $product->status }}</td>
                 <td>
-                    <a href="{{ route('product.edit', ['product' => $product->product_id]) }}"
+                    <a href="{{ route('admin.product.edit', ['product' => $product->product_id]) }}"
                         class="btn btn-sm btn-success material-symbols-outlined">edit</a>
                 </td>
                 <td>
@@ -117,7 +117,7 @@
         $('#DeleteproductIDSpan').html(productid);
         $('#DeleteproductNameSpan').html(productname);
 
-        let baseUrl = '{{ route("product.destroy", ["product" => ":id"]) }}';
+        let baseUrl = '{{ route("admin.product.destroy", ["product" => ":id"]) }}';
         let deleteUrl = baseUrl.replace(':id', productid);
 
         $('#deleteForm').attr('action', deleteUrl);

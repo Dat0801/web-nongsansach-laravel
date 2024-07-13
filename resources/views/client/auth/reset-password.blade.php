@@ -19,23 +19,14 @@
                                 <div class="col-lg-6">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Chào mừng bạn trở lại!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Đổi mật khẩu</h1>
                                         </div>
-                                        @if (Session::has('error'))
-                                            <div class="alert alert-danger">
-                                                {{ Session::get('error') }}
-                                            </div>
-                                        @endif
-                                        @if (Session::has('success'))
-                                            <div class="alert alert-success">
-                                                {{ Session::get('success') }}
-                                            </div>
-                                        @endif
-                                        <form action="{{ route('login.store') }}" method="POST" class="user">
+                                        <form action="{{ route('resetPassword') }}" method="POST" class="user">
                                             <div class="form-group mb-4">
-                                                <input type="text" class="form-control" id="exampleInputEmail"
-                                                    aria-describedby="emailHelp" placeholder="Nhập email" name="email" value="{{ old('email') }}">
-                                                @error('email')
+                                                <input type="password" class="form-control" id="exampleInputEmail"
+                                                    aria-describedby="emailHelp" placeholder="Nhập mật khẩu mới"
+                                                    name="password">
+                                                @error('password')
                                                     <div class="invalid-feedback mx-2" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </div>
@@ -43,38 +34,27 @@
                                             </div>
                                             <div class="form-group mb-4">
                                                 <input type="password" class="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Nhập mật khẩu" name="password">
-                                                @error('password')
+                                                    id="exampleInputPassword" placeholder="Xác nhận mật khẩu"
+                                                    name="confirm_password">
+                                                @error('confirm_password')
                                                     <div class="invalid-feedback mx-2" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </div>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-block form-control">
-                                                Đăng nhập
-                                            </button>
                                             @csrf
+                                            <button type="submit" class="btn btn-primary btn-block form-control">
+                                                Gửi
+                                            </button>
                                         </form>
                                         <hr>
-                                        <div class="text-center">
-                                            <a class="small" href="{{ route('forgotPassword') }}">Bạn đã
-                                                quên mật khẩu?</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a class="small" href="{{ route('register') }}">Tạo tài khoản
-                                                mới tại đây!</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </body>
 @endsection
-{{-- </html> --}}

@@ -12,6 +12,10 @@ class AdminLoginController extends Controller
 {
     public function index()
     {
+        if (Auth::guard('employee')->check()) {
+            return redirect()->route('admin.dashboard');
+        }
+        // 
         return view('admin.auth.login', [
             'title' => 'Đăng nhập'
         ]);

@@ -17,9 +17,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::join('products', 'images.product_id', '=', 'products.product_id')
-            ->select('images.*', 'products.product_name')
-            ->paginate(7);
+        $images = Image::paginate(7);
         return view('admin.image.index', compact('images'))->with('title', 'Quản lý hình ảnh');
     }
 

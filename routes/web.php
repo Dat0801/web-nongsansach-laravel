@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\ForgotPasswordController;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
@@ -10,10 +12,11 @@ use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\WeightController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\OrderController;
 
 use App\Http\Controllers\Client\Auth\LoginController;
 use App\Http\Controllers\Client\Auth\RegisterController;
-use App\Http\Controllers\Client\Auth\VerificationController;
+use App\Http\Controllers\Client\Auth\ResetPasswordController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController;
 use App\Http\Controllers\Client\ContactController;
@@ -31,15 +34,27 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth.employee'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
-        Route::get('/product/trash', [AdminProductController::class, 'trash'])->name('product.trash');
-        Route::get('/product/restore/{id}', [AdminProductController::class, 'restore'])->name('product.restore');
+        Route::get('/product/trash', [AdminProductController::class, 'trash'])->name('admin.product.trash');
+        Route::get('/product/restore/{id}', [AdminProductController::class, 'restore'])->name('admin.product.restore');
+
+        Route::resource('/product', AdminProductController::class)->names([
+            'index' => 'admin.product.index',
+            'create' => 'admin.product.create',
+            'store' => 'admin.product.store',
+            'show' => 'admin.product.show',
+            'edit' => 'admin.product.edit',
+            'update' => 'admin.product.update',
+            'destroy' => 'admin.product.destroy',
+        ]);
 
         Route::resource('/category', CategoryController::class);
         Route::resource('/unit', UnitController::class);
         Route::resource('/weight', WeightController::class);
-        Route::resource('/product', AdminProductController::class);
         Route::resource('/image', ImageController::class);
         Route::resource('/user', UserController::class);
+        Route::resource('/order', OrderController::class);
+        Route::get('/order/accept/{id}', [OrderController::class, 'accept'])->name('admin.order.accept');
+        Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('admin.order.cancel');
     });
 });
 
@@ -47,21 +62,33 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::prefix('register')->group(function () {
+    Route::get('/', [RegisterController::class, 'index'])->name('register');
+    Route::post('/verify-user', [RegisterController::class, 'verifyUser'])->name('register.verifyUser');
+    Route::get('/verify', [RegisterController::class, 'getVerify'])->name('register.verify.index');
+    Route::post('/verify', [RegisterController::class, 'postVerify'])->name('register.verify');
+});
 Route::get('/checkout', [HomeController::class, 'index'])->name('checkout');
-Route::get('/forgot-password', [HomeController::class, 'index'])->name('forgot-password');
+
+Route::prefix('forgot-password')->group(function () {
+    Route::get('/', [ForgotPasswordController::class, 'index'])->name('forgotPassword');
+    Route::post('/verify-user', [ForgotPasswordController::class, 'verifyUser'])->name('forgotPassword.verifyUser');
+    Route::get('/verify', [ForgotPasswordController::class, 'verify'])->name('forgotPassword.verify.index');
+    Route::post('/verify', [ForgotPasswordController::class, 'verifyCode'])->name('forgotPassword.verify');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    
+});
+
+Route::middleware(['verifyUserSession'])->group(function () {
+    Route::get('/reset-password', [ResetPasswordController::class, 'index'])->name('resetPassword.index');
+    Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('resetPassword');
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-});
 
 Route::prefix('cart')->group(function () {
     Route::get('/cart-badge', [CartController::class, 'cartBadge']);

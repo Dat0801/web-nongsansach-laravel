@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 class VerificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    protected $verificationCode;
     /**
      * Create a new message instance.
      *
@@ -44,6 +44,9 @@ class VerificationEmail extends Mailable
     {
         return new Content(
             view: 'client.email.verify-code',
+            with: [
+                'verificationCode' => $this->verificationCode,
+            ],
         );
     }
 

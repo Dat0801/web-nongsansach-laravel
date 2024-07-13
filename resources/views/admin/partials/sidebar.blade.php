@@ -34,7 +34,7 @@
         </a>
         <div id="collapseQLTrang" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/home">Trang người dùng</a>
+                <a class="collapse-item" href="/">Trang người dùng</a>
             </div>
         </div>
     </li>
@@ -53,10 +53,10 @@
         </a>
         <div id="collapseQLSanPham" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-gradient-success py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('product.index') }}">Xem sản phẩm</a>
-                <a class="collapse-item" href="{{ route('product.create') }}">Thêm sản
+                <a class="collapse-item" href="{{ route('admin.product.index') }}">Xem sản phẩm</a>
+                <a class="collapse-item" href="{{ route('admin.product.create') }}">Thêm sản
                     phẩm</a>
-                <a class="collapse-item" href="{{ route('product.trash') }}">Khôi phục sản
+                <a class="collapse-item" href="{{ route('admin.product.trash') }}">Khôi phục sản
                     phẩm</a>
                 <a class="collapse-item" href="{{ route('unit.index') }}">Quản lý đơn vị tính</a>
                 <a class="collapse-item" href="{{ route('weight.index') }}">Quản lý đơn vị trọng lượng</a>

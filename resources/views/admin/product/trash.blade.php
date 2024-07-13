@@ -3,7 +3,7 @@
     <title>{{ $title }}</title>
 @endsection
 @section('content')
-    <form class="d-flex" action="{{ route('product.index') }}" method="get">
+    <form class="d-flex" action="{{ route('admin.product.index') }}" method="get">
         <div style="margin: 0 auto">
             <input class="form-control me-2" type="search" placeholder="Nhập tên hàng hóa..." aria-label="Tìm kiếm hàng hóa..."
                 style="width:400px; margin: 0 auto" name="searchStr" id="searchStr">
@@ -39,15 +39,15 @@
                     <tr>
                         <td>{{ $product->product_id }}</td>
                         <td>{{ $product->product_name }}</td>
-                        <td>{{ $product->category_name }}</td>
-                        <td>{{ $product->unit_name }}</td>
+                        <td>{{ $product->category->category_name }}</td>
+                        <td>{{ $product->unit->unit_name }}</td>
                         <td>{{ $product->product_quantity }}</td>
-                        <td>{{ $product->weight_name }}</td>
+                        <td>{{ $product->weight->weight_name }}</td>
                         <td>{{ $product->product_price }}</td>
                         <td>{{ $product->product_stock }}</td>
                         <td>{{ $product->status }}</td>
                         <td>
-                            <a href="{{ route('product.restore', ['id' => $product->product_id]) }}"
+                            <a href="{{ route('admin.product.restore', ['id' => $product->product_id]) }}"
                                 class="btn btn-sm btn-success material-symbols-outlined">cycle</a>
                         </td>
                         <td>
@@ -65,7 +65,7 @@
         </div>
         <div>
             </center>
-            <a href="{{ route('product.index') }}" class="btn btn-lg btn-primary material-symbols-outlined">
+            <a href="{{ route('admin.product.index') }}" class="btn btn-lg btn-primary material-symbols-outlined">
                 keyboard_return
             </a>
         </div>
@@ -113,7 +113,7 @@
             $('#DeleteproductIDSpan').html(productid);
             $('#DeleteproductNameSpan').html(productname);
 
-            let baseUrl = '{{ route('product.destroy', ['product' => ':id']) }}';
+            let baseUrl = '{{ route('admin.product.destroy', ['product' => ':id']) }}';
             let deleteUrl = baseUrl.replace(':id', productid);
 
             $('#deleteForm').attr('action', deleteUrl);

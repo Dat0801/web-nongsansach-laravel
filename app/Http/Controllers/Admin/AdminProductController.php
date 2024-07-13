@@ -21,13 +21,7 @@ class AdminProductController extends Controller
     public function index()
     {
         //
-        $products = Product::join('categories', 'products.category_id', '=', 'categories.category_id')
-            ->join('weights', 'products.weight_id', '=', 'weights.weight_id')
-            ->join('units', 'products.unit_id', '=', 'units.unit_id')
-            ->select('products.*', 'categories.category_name', 'weights.weight_name', 'units.unit_name')
-            ->where('products.status', '=', '1')
-            ->orderBy('product_id')
-            ->paginate(7);
+        $products = Product::paginate(7);
         return view('admin.product.index', compact('products'))->with('title', 'Quản lý sản phẩm');
     }
 
@@ -189,13 +183,7 @@ class AdminProductController extends Controller
 
     public function trash()
     {
-        $products = Product::join('categories', 'products.category_id', '=', 'categories.category_id')
-            ->join('weights', 'products.weight_id', '=', 'weights.weight_id')
-            ->join('units', 'products.unit_id', '=', 'units.unit_id')
-            ->select('products.*', 'categories.category_name', 'weights.weight_name', 'units.unit_name')
-            ->where('products.status', '=', '0')
-            ->orderBy('product_id')
-            ->paginate(7);
+        $products = Product::where('status', '=', '0')->paginate(7);
         return view('admin.product.trash', compact('products'))->with('title', 'Thùng rác sản phẩm');
     }
 

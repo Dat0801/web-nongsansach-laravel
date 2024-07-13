@@ -6,7 +6,7 @@
     <center>
         <h2>{{ Str::upper($title) }}</h2>
     </center>
-    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
         <div class="row">
             <div style="margin: 0px 50px;" class="col">
                 <div>
@@ -100,7 +100,7 @@
             <div>
                 <center><button type="submit" class="btn btn-lg btn-success material-symbols-outlined">add_circle </button>
                 </center>
-                <a href="{{ route('product.index') }}" style="margin: 0px 50px;"
+                <a href="{{ route('admin.product.index') }}" style="margin: 0px 50px;"
                     class="btn btn-lg btn-primary material-symbols-outlined">
                     keyboard_return
                 </a>

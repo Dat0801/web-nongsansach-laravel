@@ -11,7 +11,7 @@ use App\Mail\VerificationEmail;
 use App\Mail\OrderSuccessEmail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CheckoutRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -31,7 +31,7 @@ class CheckoutController extends Controller
         return view('client.checkout.index')->with('title', 'Thanh toán');
     }
 
-    public function verifyUser(UserRequest $request)
+    public function verifyUser(CheckoutRequest $request)
     {
         if (!$request->has('payment_method')) {
             return redirect()->route('checkout');

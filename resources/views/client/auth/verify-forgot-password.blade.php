@@ -29,7 +29,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Nhập mã xác nhận</h1>
                                     </div>
-                                    <form action="{{ route('verify') }}" method="POST" class="user">
+                                    <form action="{{ route('forgotPassword.verify') }}" method="POST" class="user">
                                         <div class="form-group mb-4">
                                             <input type="text" class="form-control" aria-describedby=""
                                                 placeholder="Nhập mã xác nhận thông qua mail" name="code">
@@ -42,7 +42,8 @@
                                         @csrf
                                     </form>
                                     <div class="text-center mt-4">
-                                        <p>Mã xác nhận đã được gửi tới email của bạn vui lòng kiểm tra và điền mã xác nhận!</p>
+                                        <p>Mã xác nhận đã được gửi tới email của bạn vui lòng kiểm tra và điền mã xác nhận!
+                                        </p>
                                     </div>
                                 </div>
                             </div>

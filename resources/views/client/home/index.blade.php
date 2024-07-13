@@ -105,13 +105,13 @@
                     <div class="border border-primary rounded position-relative" style="transition: 0.5s;">
                         <div class="vesitable-img">
                             <a href="{{ route('product.show', ['product' => $product->product_id]) }}">
-                                <img src="{{ asset('') }}assets/client/img/products/{{ $product->image_name }}"
+                                <img src="{{ asset('') }}assets/client/img/products/{{ $product->primaryImage->image_name }}"
                                     class="img-fluid w-100 rounded-top carousel-image" alt="">
                             </a>
                         </div>
                         <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
                             style="top: 10px; left: 10px;">
-                            {{ $product->category_name }}
+                            {{ $product->category->category_name }}
                         </div>
                         <div class="p-4 rounded-bottom">
                             <a href="{{ route('product.show', ['product' => $product->product_id]) }}">
@@ -122,8 +122,8 @@
 
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold mb-4">
-                                    {{ number_format($product->product_price) }}<sup><small>đ</small></sup><sub>/<small>{{ $product->unit_name }}
-                                            {{ $product->product_quantity }}{{ $product->weight_name }}</small></sub>
+                                    {{ number_format($product->product_price) }}<sup><small>đ</small></sup><sub>/<small>{{ $product->unit->unit_name }}
+                                            {{ $product->product_quantity }}{{ $product->weight->weight_name }}</small></sub>
                                 </p>
                                 <button class="add-cart btn border border-secondary rounded-pill px-3 text-primary"
                                     data-url="{{ route('cart') }}" data-id = "{{ $product->product_id }}">

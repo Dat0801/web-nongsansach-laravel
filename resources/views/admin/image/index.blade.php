@@ -3,8 +3,6 @@
 <title>{{ $title }}</title>
 @endsection
 @section('content')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    integrity="sha384-pzjw8s+ekmvplp5f/ZxXnDQbcz0S7bJr6W2kcoFVGLsRakET4Qc5I2tG4LDA2tB" crossorigin="anonymous">
 <form class="d-flex" action="{{ route('image.index') }}" method="get">
     <div style="margin: 0 auto">
         <input class="form-control me-2" type="search" placeholder="Nhập tên hình ảnh..." aria-label="Tìm kiếm hình ảnh..."
@@ -53,7 +51,7 @@
                 <td>{{ $image->image_id }}</td>
                 <td>{{ $image->image_name }}</td>
                 <td><img src="{{ asset('assets/client/img/products'). '/'. $image->image_name }}" alt="" style="width: 50px;"></td>
-                <td>{{ $image->product_name }}</td>
+                <td>{{ $image->product->product_name }}</td>
                 <td>{{ $image->is_primary}}</td>
                 <td>
                     <a href="{{ route('image.edit', ['image' => $image->image_id]) }}"
