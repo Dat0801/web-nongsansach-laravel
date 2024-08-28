@@ -62,14 +62,7 @@
                                             </div>
                                             <div class="form-group mb-4">
                                                 <select id="province" name="province" class="form-select">
-                                                    <option value="">Chọn tỉnh/thành phố</option>
-                                                    @if (old('province'))
-                                                        <option value="{{ old('province') }}" id="provinceSelected">
-                                                            {{ old('province') }}
-                                                        </option>
-                                                    @else
-                                                        <option value="" id="provinceSelected"></option>
-                                                    @endif
+                                                    <option value="">Chọn Tỉnh/Thành phố</option>
                                                 </select>
                                                 @error('province')
                                                     <div class="invalid-feedback mx-2" style="display: block">
@@ -81,14 +74,7 @@
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <select id="district" name="district"
                                                         class="form-select form-control-user">
-                                                        <option value="">Chọn quận/huyện</option>
-                                                        @if (old('district'))
-                                                            <option value="{{ old('district') }}" id="districtSelected" selected>
-                                                                {{ old('district') }}
-                                                            </option>
-                                                        @else
-                                                            <option value="" id="districtSelected"></option>
-                                                        @endif
+                                                        <option value="">Chọn Quận/Huyện</option>
                                                     </select>
                                                     @error('district')
                                                         <div class="invalid-feedback mx-2" style="display: block">
@@ -99,14 +85,7 @@
                                                 <div class="col-sm-6">
                                                     <select id="ward" name="ward" class="form-select"
                                                         style="background-color: #fff;">
-                                                        <option value="">Chọn phường/xã</option>
-                                                        @if (old('ward'))
-                                                            <option value="{{ old('ward') }}" id="wardSelected" selected>
-                                                                {{ old('ward') }}
-                                                            </option>
-                                                        @else
-                                                            <option value="" id="wardSelected"></option>
-                                                        @endif
+                                                        <option value="">Chọn Phường/Xã</option>
                                                     </select>
                                                     @error('ward')
                                                         <div class="invalid-feedback mx-2" style="display: block">

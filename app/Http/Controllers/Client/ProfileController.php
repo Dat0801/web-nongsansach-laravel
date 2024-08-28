@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     //
     public function index() {
-        return view('client.profile.index')->with('title', 'Thông tin tài khoản');
+        $orders = auth()->user()->orders;
+        return view('client.profile.index', compact('orders'))->with('title', 'Thông tin tài khoản');
     }
 }

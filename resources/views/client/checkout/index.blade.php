@@ -73,14 +73,12 @@
                             <div class="col-md-4 mb-3">
                                 <label for="province" class="form-label my-3">Tỉnh<sup style="color: red"> (*)</sup></label>
                                 <select id="province" name="province" class="form-select">
-                                    <option value="">Chọn tỉnh</option>
                                     @if (session()->has('user'))
-                                        <option value="{{ session()->get('user')['province'] }}"
-                                            id="provinceSelected">
-                                            {{ session()->get('user')['province']}}
+                                        <option value="{{ session()->get('user')['province'] }}" id="provinceSelected">
+                                            {{ session()->get('user')['province'] }}
                                         </option>
                                     @else
-                                        <option value="" id="provinceSelected"></option>
+                                        <option value="">Chọn Tỉnh/Thành phố</option>
                                     @endif
                                 </select>
                                 @error('province')
@@ -93,14 +91,13 @@
                                 <label for="district" class="form-label my-3">Quận/Huyện<sup style="color: red">
                                         (*)</sup></label>
                                 <select id="district" name="district" class="form-select form-control-user">
-                                    <option value="">Chọn quận/huyện</option>
                                     @if (session()->has('user'))
-                                        <option value="{{ session()->get('user')['district'] }}" selected
+                                        <option value="{{ session()->get('user')['district'] }}"
                                             id="districtSelected">
                                             {{ session()->get('user')['district'] }}
                                         </option>
                                     @else
-                                        <option value="" id="districtSelected"></option>
+                                        <option value="">Chọn Quận/Huyện</option>
                                     @endif
                                 </select>
                                 @error('district')
@@ -112,14 +109,12 @@
                             <div class="col-md-4 mb-3">
                                 <label for="ward" class="form-label my-3">Xã<sup style="color: red"> (*)</sup></label>
                                 <select id="ward" name="ward" class="form-select" style="background-color: #fff;">
-                                    <option value="">Chọn phường/xã</option>
                                     @if (session()->has('user'))
-                                        <option value="{{ session()->get('user')['ward'] }}" id="wardSelected"
-                                            selected>
+                                        <option value="{{ session()->get('user')['ward'] }}" selected id="wardSelected">
                                             {{ session()->get('user')['ward'] }}
                                         </option>
                                     @else
-                                        echo '<option value="" id="wardSelected"></option>';
+                                        <option value="">Chọn Phường/Xã</option>
                                     @endif
                                 </select>
                                 @error('ward')
@@ -129,16 +124,16 @@
                                 @enderror
                             </div>
                             @if (!session()->has('user') || (session()->has('user') && !session()->get('user')['password']))
-                            <div class="container">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="showInput">
-                                    <label class="custom-control-label" for="showInput">Tạo tài khoản mới?</label>
-                                </div>
+                                <div class="container">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="showInput">
+                                        <label class="custom-control-label" for="showInput">Tạo tài khoản mới?</label>
+                                    </div>
 
-                                <div class="input-group mt-3" style="display: none">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                                    <div class="input-group mt-3" style="display: none">
+                                        <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                                    </div>
                                 </div>
-                            </div>
                             @endif
                         </div>
                         @csrf
@@ -190,13 +185,13 @@
     </div>
     <script>
         $(document).ready(function() {
-          $('#showInput').change(function() {
-            if ($(this).is(':checked')) {
-              $('.input-group').slideDown(); 
-            } else {
-              $('.input-group').slideUp();
-            }
-          });
+            $('#showInput').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.input-group').slideDown();
+                } else {
+                    $('.input-group').slideUp();
+                }
+            });
         });
-      </script>
+    </script>
 @endsection

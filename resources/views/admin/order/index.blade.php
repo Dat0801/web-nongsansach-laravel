@@ -1,4 +1,4 @@
-a@extends('admin.shared.layout')
+@extends('admin.shared.layout')
 @section('title')
     <title>{{ $title }}</title>
 @endsection
@@ -48,7 +48,7 @@ a@extends('admin.shared.layout')
                     <tr>
                         <td>{{ $order->order_id }}</td>
                         <td>{{ $order->user->name }}</td>
-                        <td>{{ $order->employee->name ?? 'Nhân viên chưa xác nhận' }}</td>
+                        <td>{{ $order->employee->employee_name ?? 'Nhân viên chưa xác nhận' }}</td>
                         <td>{{ $order->created_at }}</td>
                         <td>{{ $order->ship_date }}</td>
                         <td>{{ $order->payment_method }}</td>

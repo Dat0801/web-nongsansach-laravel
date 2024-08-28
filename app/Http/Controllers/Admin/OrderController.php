@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 
 class OrderController extends Controller
@@ -59,6 +60,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->status = 'Đang giao hàng';
+        $order->employee_id = Auth::guard('employee')->user()->employee_id;
         $order->save();
         return redirect()->back()->with('success', 'Đã chấp nhận đơn hàng');
     }

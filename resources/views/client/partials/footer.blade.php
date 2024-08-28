@@ -57,7 +57,7 @@
                     <p>Email: nongsansach12@gmail.com</p>
                     <p>Số điện thoại: +0123 4567 8910</p>
                     <p>Payment Accepted</p>
-                    <img src="img/payment.png" class="img-fluid" alt="">
+                    <img src="{{ asset('') }}assets/client/img/payment.png" class="img-fluid" alt="">
                 </div>
             </div>
         </div>

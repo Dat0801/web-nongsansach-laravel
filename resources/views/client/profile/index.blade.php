@@ -59,9 +59,8 @@
                                                     <div class="col-4">
                                                         <p class="mb-0">Địa chỉ:</p>
                                                     </div>
-
                                                     <div class="form-group col-8">
-                                                        <input class="form-control" disabled value=""></input>
+                                                        <input class="form-control" disabled value="{{ Auth::user()->defaultAddress->address }}"></input>
                                                     </div>
                                                 </div>
                                                 <div class="align-items-center text-center justify-content-center py-3">
@@ -73,12 +72,11 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-
-                                    {{-- <?php
-                                    foreach ($purchasing_history as $key => $item) {
-                                        $totalCounter = 0;
-                                        $itemCounter = 0;
-                                        ?>
+                                    @foreach ($orders as $key => $item)
+                                        @php
+                                            $totalCounter = 0;
+                                            $itemCounter = 0;
+                                        @endphp
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -92,77 +90,86 @@
                                             <div class="row">
                                                 <div class="col-md-9">
                                                     <h5>Hóa đơn
-                                                        <?php echo $key + 1; ?>
+                                                        {{ $key + 1 }}
                                                     </h5>
-                                                    <?php
-                                                    $date = new DateTime($item['NgayGiao']);
-                                                    $formattedDate = $date->format('d-m-Y');
-                                                    $date = '(' . $formattedDate . ')';
-                                                    
-                                                    if ($item['TrangThai'] == 'Đang xử lý' || $item['TrangThai'] == 'Đang giao hàng') {
-                                                        $color = '#e65c00';
-                                                        if ($item['TrangThai'] == 'Đang giao hàng') {
-                                                            $date = '(Ngày giao dự kiến: ' . $formattedDate . ')';
-                                                        }
-                                                    } elseif ($item['TrangThai'] == 'Đã giao hàng') {
-                                                        $color = '#008000';
-                                                    } else {
-                                                        $color = '#cc0000';
-                                                    }
-                                                    if (isset($_SESSION['orderPaid'])) {
-                                                        if ($item['MaHD'] == $_SESSION['orderPaid']) {
-                                                            $colorPaid = '#008000';
-                                                            echo "<h6 style='color:$color;'> " . $item['TrangThai'] . ' ' . $date . "<span style='color:$colorPaid;'> (Đã thanh toán)</span></h6>";
+
+                                                    @php
+                                                        $date = new DateTime($item['ship_date']);
+                                                        $formattedDate = $date->format('d-m-Y');
+                                                        $date = '(' . $formattedDate . ')';
+
+                                                        if (
+                                                            $item['status'] == 'Đang xử lý' ||
+                                                            $item['status'] == 'Đang giao hàng'
+                                                        ) {
+                                                            $color = '#e65c00';
+                                                            if ($item['status'] == 'Đang giao hàng') {
+                                                                $date = '(Ngày giao dự kiến: ' . $formattedDate . ')';
+                                                            }
+                                                        } elseif ($item['status'] == 'Đã giao hàng') {
+                                                            $color = '#008000';
                                                         } else {
-                                                            echo "<h6 style='color:$color;'> " . $item['TrangThai'] . ' ' . $date . '</h6>';
+                                                            $color = '#cc0000';
                                                         }
-                                                    } else {
-                                                        echo "<h6 style='color:$color;'> " . $item['TrangThai'] . ' ' . $date . '</h6>';
-                                                    }
-                                                    ?>
+                                                        if ($item['payment_method'] == 'vnpay') {
+                                                            $colorPaid = '#008000';
+                                                            echo "<h6 style='color:$color;'> " .
+                                                                $item['status'] .
+                                                                ' ' .
+                                                                $date .
+                                                                "<span style='color:$colorPaid;'> (Đã thanh toán)</span></h6>";
+                                                        } else {
+                                                            echo "<h6 style='color:$color;'> " .
+                                                                $item['status'] .
+                                                                ' ' .
+                                                                $date .
+                                                                '</h6>';
+                                                        }
+                                                    @endphp
                                                 </div>
                                             </div>
-                                            <?php
-                                            foreach ($purchasing_history[$key]['detail'] as $detailKey => $detailValue) {
-                                                $total = $detailValue['product']['GiaBan'] * $detailValue['SoLuong'];
-                                                $totalCounter += $total;
-                                                $itemCounter += $detailValue['SoLuong'];
-                                                ?>
+                                            @foreach ($item->orderDetails as $detailKey => $detailValue)
+                                                @php
+                                                    $total =
+                                                        $detailValue->product['product_price'] *
+                                                        $detailValue['quantity'];
+                                                    $totalCounter += $total;
+                                                    $itemCounter += $detailValue['quantity'];
+                                                @endphp
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="{{ asset('') }}assets/client/img/products/<?php echo $detailValue->product->primaryImage['image_name']; ?>"
+                                                                class="img-fluid rounded-circle"
+                                                                style="width: 80px; height: 80px; object-fit: contain;"
+                                                                alt="">
+                                                            <p class="mb-0">
+                                                                <?php echo $detailValue->product['product_name']; ?>
+                                                            </p>
+                                                        </div>
 
-                                            <tr>
-                                                <th scope="row">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="{{ asset('') }}assets/client/img/<?php echo $detailValue['product']['HinhAnh']; ?>"
-                                                            class="img-fluid rounded-circle"
-                                                            style="width: 80px; height: 80px; object-fit: contain;"
-                                                            alt="">
-                                                        <p class="mb-0">
-                                                            <?php echo $detailValue['product']['TenHang']; ?>
+                                                    </th>
+                                                    <td>
+                                                        <p class="mb-0 mt-4">
+                                                            <?php echo number_format($detailValue['product']['product_price']); ?><sup><small>đ</small></sup>
                                                         </p>
-                                                    </div>
-
-                                                </th>
-                                                <td>
-                                                    <p class="mb-0 mt-4">
-                                                        <?php echo number_format($detailValue['product']['GiaBan']); ?><sup><small>đ</small></sup>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 mt-4">
-                                                        <?php echo $detailValue['product']['DVT']; ?>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <input type="text" value="<?php echo $detailValue['SoLuong']; ?>" disabled
-                                                        class="mb-0 mt-4" size="5">
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 mt-4">
-                                                        <?php echo number_format($total); ?><sup><small>đ</small></sup>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 mt-4">
+                                                            <?php echo $detailValue['product']['DVT']; ?>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" value="<?php echo $detailValue['quantity']; ?>" disabled
+                                                            class="mb-0 mt-4" size="5">
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 mt-4">
+                                                            <?php echo number_format($total); ?><sup><small>đ</small></sup>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             <tr>
                                                 <td></td>
                                                 <td></td>
@@ -185,52 +192,50 @@
                                                 </td>
                                                 <td></td>
                                             </tr>
-                                            <?php } ?>
-                                            </tbody>
-                                        </table>
-                                    </div> --}}
-                                    <div class="tab-pane" id="nav-changepassword" role="tabpanel"
-                                        aria-labelledby="nav-changepassword-tab">
-                                        <div class="px-2">
-                                            <div class="row g-4">
-                                                <form class="col-6" action="" method="post">
-                                                    <div
-                                                        class="row align-items-center text-center justify-content-center py-2">
-                                                        <div class="col-4">
-                                                            <p class="mb-0">Mật khẩu cũ:</p>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <input type="password" class="form-control mb-0"
-                                                                name="oldpassword">
-                                                        </div>
+                                    @endforeach
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="nav-changepassword" role="tabpanel"
+                                    aria-labelledby="nav-changepassword-tab">
+                                    <div class="px-2">
+                                        <div class="row g-4">
+                                            <form class="col-6" action="" method="post">
+                                                <div
+                                                    class="row align-items-center text-center justify-content-center py-2">
+                                                    <div class="col-4">
+                                                        <p class="mb-0">Mật khẩu cũ:</p>
                                                     </div>
-                                                    <div
-                                                        class="row text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-4">
-                                                            <p class="mb-0">Mật khẩu mới:</p>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <input type="password" class="form-control mb-0"
-                                                                name="newpassword">
-                                                        </div>
+                                                    <div class="col-8">
+                                                        <input type="password" class="form-control mb-0"
+                                                            name="oldpassword">
                                                     </div>
-                                                    <div
-                                                        class="row text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-4">
-                                                            <p class="mb-0">Nhập lại mật khẩu:</p>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <input type="password" class="form-control mb-0"
-                                                                name="renewpassword" required>
-                                                        </div>
+                                                </div>
+                                                <div
+                                                    class="row text-center align-items-center justify-content-center py-2">
+                                                    <div class="col-4">
+                                                        <p class="mb-0">Mật khẩu mới:</p>
                                                     </div>
-                                                    <div
-                                                        class="align-items-center text-center justify-content-center py-3">
-                                                        <input type="submit" class="btn btn-primary"
-                                                            name="btnChangePassword" value="Đổi mật khẩu" />
+                                                    <div class="col-8">
+                                                        <input type="password" class="form-control mb-0"
+                                                            name="newpassword">
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <div
+                                                    class="row text-center align-items-center justify-content-center py-2">
+                                                    <div class="col-4">
+                                                        <p class="mb-0">Nhập lại mật khẩu:</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <input type="password" class="form-control mb-0"
+                                                            name="renewpassword" required>
+                                                    </div>
+                                                </div>
+                                                <div class="align-items-center text-center justify-content-center py-3">
+                                                    <input type="submit" class="btn btn-primary"
+                                                        name="btnChangePassword" value="Đổi mật khẩu" />
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -240,5 +245,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

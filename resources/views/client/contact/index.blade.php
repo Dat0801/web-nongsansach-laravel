@@ -1,5 +1,5 @@
 @extends('client.shared.layout')
-@section('title', '{{ $title }}')
+@section('title', $title)
 @section('content')
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">

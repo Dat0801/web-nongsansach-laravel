@@ -67,7 +67,6 @@ $(document).ready(function () {
                 if (message.msg == 'success') {
                     $.get(urlCart + '/cart-badge', function (data) {
                         $('#cart-badge').html(data);
-
                         var toast = new bootstrap.Toast(document.querySelector('.toast'));
                         toast.show();
                     });
