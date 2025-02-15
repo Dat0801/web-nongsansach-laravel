@@ -14,16 +14,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ secure_asset('') }}assets/client/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="{{ secure_asset('') }}assets/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ secure_asset('client/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('client/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ secure_asset('') }}assets/client/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ secure_asset('client/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ secure_asset('') }}assets/client/css/style.css" rel="stylesheet">
+    <link href="{{ secure_asset('client/css/style.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('') }}assets/client/css/product.css">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('client/css/product.css') }}">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <title>@yield('title')</title>
@@ -65,14 +65,14 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ secure_asset('') }}assets/client/lib/easing/easing.min.js"></script>
-<script src="{{ secure_asset('') }}assets/client/lib/waypoints/waypoints.min.js"></script>
-<script src="{{ secure_asset('') }}assets/client/lib/lightbox/js/lightbox.min.js"></script>
-<script src="{{ secure_asset('') }}assets/client/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="{{ secure_asset('client/lib/easing/easing.min.js') }}"></script>
+<script src="{{ secure_asset('client/lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ secure_asset('client/lib/lightbox/js/lightbox.min.js') }}"></script>
+<script src="{{ secure_asset('client/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
 <!-- Template Javascript -->
-<script src="{{ secure_asset('') }}assets/client/js/main.js"></script>
-<script src="{{ secure_asset('') }}assets/client/js/cart.js"></script>
+<script src="{{ secure_asset('client/js/main.js') }}"></script>
+<script src="{{ secure_asset('client/js/cart.js') }}"></script>
 
 <!-- Ajax with API-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -82,6 +82,6 @@
     integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="{{ secure_asset('') }}assets/client/js/index.js"></script>
+<script src="{{ secure_asset('client/js/index.js') }}"></script>
 
 </html>

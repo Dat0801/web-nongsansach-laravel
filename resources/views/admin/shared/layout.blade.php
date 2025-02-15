@@ -15,9 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Custom styles for this template-->
 
-    <link href="{{ secure_asset('/assets/admin/Content/css/sb-admin-2.min.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/admin/Content/css/sb-admin-2.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/admin/Content/vendor/fontawesome-free/css/all.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('admin/Content/css/sb-admin-2.min.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('admin/Content/css/sb-admin-2.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('admin/Content/vendor/fontawesome-free/css/all.css') }}" rel="stylesheet" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -37,7 +37,7 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="{{ secure_asset('/assets/admin/Content/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ secure_asset('/assets/admin/Content/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ secure_asset('/assets/admin/Content/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ secure_asset('/assets/admin/Content/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ secure_asset('admin/Content/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ secure_asset('admin/Content/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ secure_asset('admin/Content/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ secure_asset('admin/Content/js/sb-admin-2.min.js') }}"></script>
