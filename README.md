@@ -1,66 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Website Nông Sản Sạch
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Tóm Tắt Dự Án
 
-## About Laravel
+Dự án này là một website dành riêng để bán các sản phẩm nông sản sạch và hữu cơ, bao gồm rau củ, trái cây. Mục tiêu của website là cung cấp cho khách hàng khả năng tiếp cận dễ dàng với những sản phẩm chất lượng cao, an toàn và thân thiện với môi trường trực tiếp từ các trang trại đáng tin cậy.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tính Năng Trang Người Dùng
+- **Đăng ký tài khoản**: Đăng ký tài khoản thông qua email để xác nhận và tạo tài khoản.
+- **Danh Mục Sản Phẩm**: Tổ chức theo danh mục rau củ, trái cây.
+- **Danh Sách Sản Phẩm**: Cung cấp thông tin chi tiết về từng sản phẩm, bao gồm giá cả, số lượng tồn, trọng lượng, ...
+- **Tìm Kiếm & Lọc**: Chức năng tìm kiếm mạnh mẽ và bộ lọc giúp khách hàng tìm kiếm sản phẩm nhanh chóng.
+- **Giỏ Hàng & Thanh Toán**: Trải nghiệm mua sắm mượt mà và an toàn với quy trình thanh toán đơn giản.
+- **Theo Dõi Đơn Hàng**: Khách hàng có thể theo dõi đơn hàng từ lúc mua đến khi giao hàng.
+- **Thiết Kế Responsive**: Tối ưu cho thiết bị di động để đảm bảo trải nghiệm liền mạch trên mọi thiết bị.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tính Năng Trang Quản Trị
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Quản Lý Sản Phẩm**: Thêm, sửa, xóa sản phẩm, bao gồm thông tin chi tiết như tên, giá, hình ảnh và mô tả.
+- **Quản Lý Danh Mục**: Tạo và chỉnh sửa danh mục sản phẩm để tổ chức hàng hóa một cách hợp lý.
+- **Quản Lý Đơn Hàng**: Xem và cập nhật trạng thái đơn hàng.
+- **Quản Lý Khách Hàng**: Theo dõi thông tin khách hàng, bao gồm danh sách khách hàng, lịch sử mua hàng.
 
-## Learning Laravel
+## Công Nghệ Sử Dụng
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Ngôn Ngữ**: PHP
+- **Framework**: Laravel
+- **Cơ Sở Dữ Liệu**: MySQL
+- **Các Công Nghệ Khác**: HTML/CSS, Boostrap, JavaScript, jQuery
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Tài Khoản Test
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Chức Năng Thanh Toán qua VNPay
 
-## Laravel Sponsors
+- **Tài Khoản Test**:
+  - **Ngân hàng**: NCB
+  - **Số thẻ**: 9704198526191432198
+  - **Tên chủ thẻ**: NGUYEN VAN A
+  - **Ngày phát hành**: 07/15
+  - **Mật khẩu OTP**: 123456
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+### Tài Khoản Quản Trị
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **Tài Khoản**: nva2003@gmail.com
+- **Mật khẩu**: Admin123*
+  
+### Tài Khoản Khách Hàng
 
-## Contributing
+- **Tài Khoản**: nguyentuthanhdat0801@gmail.com
+- **Mật khẩu**: Dat123456789*
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Sử Dụng
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Giao Diện Quản Trị**: Đăng nhập với tài khoản quản trị để quản lý sản phẩm, danh mục, đơn hàng và khách hàng.
+- **Giao Diện Người Dùng**: Duyệt sản phẩm, thêm vào giỏ hàng và thực hiện thanh toán điền thông tin giao hàng.
