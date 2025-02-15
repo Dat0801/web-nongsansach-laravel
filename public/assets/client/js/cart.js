@@ -2,7 +2,7 @@ $(document).ready(function () {
     //update quantity in cart
     $(document).on('change', '.cart-quantity-single', function () {
         var id = $(this).data('id');
-        var urlCart = $(this).data('url');
+        var urlCart = $(this).data('url').replace('http://', 'https://'); // Đảm bảo HTTPS
         var product_stock = $(this).data('stock');
         var quantity = $(this).val();
         if (quantity < 1) {
@@ -23,16 +23,15 @@ $(document).ready(function () {
                 if (data.msg == 'success') {
                     $.get(urlCart + '/cart-table', function (data) {
                         $('#cart-table-body').html(data);
-                    })
+                    });
                 }
             },
         });
-
     });
 
     //remove item from cart
     $(document).on('click', '#accept-delete', function () {
-        var urlCart = $(this).data('url');
+        var urlCart = $(this).data('url').replace('http://', 'https://'); // Đảm bảo HTTPS
         var id = $(this).data('id');
         $.ajax({
             type: 'GET',
@@ -44,8 +43,8 @@ $(document).ready(function () {
                     $('.modal-backdrop').remove();
 
                     $.get(urlCart + '/cart-table', function (data) {
-                        $('#cart-table-body').html(data);   
-                    })
+                        $('#cart-table-body').html(data);
+                    });
 
                     $.get(urlCart + '/cart-badge', function (data) {
                         $('#cart-badge').html(data);
@@ -57,7 +56,7 @@ $(document).ready(function () {
 
     //add product to cart
     $(document).on('click', '.add-cart', function () {
-        var urlCart = $(this).data('url');
+        var urlCart = $(this).data('url').replace('http://', 'https://'); // Đảm bảo HTTPS
         var id = $(this).data('id');
         $.ajax({
             type: 'GET',
@@ -70,7 +69,6 @@ $(document).ready(function () {
                         var toast = new bootstrap.Toast(document.querySelector('.toast'));
                         toast.show();
                     });
-
                 }
             },
         });
